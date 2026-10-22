@@ -74,17 +74,21 @@ db.exec(`
 app.use(helmet());
 
 const allowedOrigins = (
-    process.env.CORS_ORIGIN ||
-    "http://localhost:5500,http://127.0.0.1:5500,http://localhost:3000"
-).split(",").map(origin => origin.trim());
+    process.env.CORS_ORIGIN || "http://localhost:5500"
+)
+    .split(",")
+    .map(origin => origin.trim());
 
 app.use(cors({
-    origin(origin, callback) {
+    origin: function (origin, callback) {
         if (!origin || allowedOrigins.includes(origin)) {
             return callback(null, true);
         }
-        callback(new Error("Website origin is not allowed."));
-    }
+
+        return callback(new Error("Origin not allowed by CORS"));
+    },
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
 app.use(express.json({ limit: "20kb" }));
