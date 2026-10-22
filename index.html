@@ -1787,7 +1787,7 @@
                 : { email, password };
 
             try {
-                const response = await fetch(`http://localhost:3000${endpoint}`, {
+                const response = await fetch(`https://goodfunds.onrender.com${endpoint}`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -2068,7 +2068,7 @@
 
     <script>
         // GoodFunds backend connection
-        const API_BASE = "http://localhost:3000/api";
+        const API_BASE = "https://goodfunds.onrender.com/api/";
 
         // Keep the login token for this browser session
         function getGoodFundsToken() {
