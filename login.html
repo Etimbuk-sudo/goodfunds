@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GoodFunds | Login</title>
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body data-auth-mode="login">
+  <main class="auth-screen">
+    <section class="auth-card">
+      <div class="brand">
+        <div class="brand-icon">G</div>
+        <div>
+          <div class="brand-name">Good<span>Funds</span></div>
+          <small>Bank • Save • Invest • Grow</small>
+        </div>
+      </div>
+      <h1>Welcome back</h1>
+      <p>Sign in to manage your GoodFunds demo dashboard.</p>
+      <form id="authForm" action="dashboard.html">
+        
+        <div class="form-group">
+          <label for="authEmail">Email address</label>
+          <input id="authEmail" name="email" type="email" required placeholder="you@example.com" autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="authPassword">Password</label>
+          <input id="authPassword" name="password" type="password" required minlength="6" placeholder="Your password" autocomplete="current-password">
+        </div>
+        <button class="btn btn-full" id="authSubmit" type="submit">Sign in to GoodFunds</button>
+      </form>
+      <div class="auth-switch">
+        <span>New to GoodFunds?</span>
+        <a class="text-btn" href="signup.html">Create account</a>
+      </div>
+      <div class="notice">Prototype only. Do not enter real banking passwords, BVN, NIN or card details.</div>
+      <div id="authMessage" class="muted" role="status" style="margin-top:12px;font-size:12px"></div>
+    </section>
+  </main>
+  <script src="js/auth.js"></script>
+</body>
+</html>

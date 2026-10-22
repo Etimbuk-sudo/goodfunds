@@ -1,0 +1,317 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#071426">
+<title>GoodFunds | Bank, Save, Invest, Grow</title>
+
+<style>
+:root {
+  --navy:#071426;
+  --navy2:#10243c;
+  --green:#21d49a;
+  --text:#122238;
+  --muted:#66778c;
+  --light:#f3f8f7;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,"Segoe UI",Arial,sans-serif;color:var(--text);line-height:1.6}
+a{text-decoration:none;color:inherit}
+.container{width:min(1120px,90%);margin:auto}
+header{background:var(--navy);color:white;position:sticky;top:0;z-index:10;border-bottom:1px solid #ffffff18}
+nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;font-size:1.35rem;font-weight:850}
+.brand-mark{width:42px;height:42px;background:var(--green);color:var(--navy);border-radius:13px;display:grid;place-items:center;font-size:1.5rem}
+.brand span span{color:var(--green)}
+.navlinks{display:flex;align-items:center;gap:25px;color:#d4deea;font-size:.92rem}
+.btn{display:inline-flex;justify-content:center;align-items:center;padding:13px 21px;border-radius:10px;font-weight:750;border:0;cursor:pointer;transition:.2s}
+.btn:hover{transform:translateY(-2px)}
+.green{background:var(--green);color:#06271c}
+.outline{border:1px solid #ffffff55;color:white}
+.hero{background:linear-gradient(100deg,#061426 8%,#071426eF 42%,#07142630 100%),url("https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1800&q=85") center 35%/cover;color:white;padding:90px 0}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:45px;align-items:center}
+.pill{display:inline-block;border:1px solid #ffffff40;border-radius:30px;padding:7px 13px;color:#baf5de;font-size:.83rem;margin-bottom:22px}
+h1{font-size:clamp(2.7rem,5.2vw,4.6rem);line-height:1.08;letter-spacing:-2px;margin-bottom:22px}
+h1 span{color:var(--green)}
+.hero-copy{color:#d1dce8;max-width:530px;font-size:1.06rem;margin-bottom:28px}
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+.small-note{font-size:.83rem;color:#b8c8d7;margin-top:20px}
+.preview{background:#ffffffed;color:var(--text);border:1px solid #ffffff90;border-radius:22px;padding:25px;box-shadow:0 25px 70px #0005;max-width:430px;justify-self:end;width:100%}
+.preview-top{display:flex;justify-content:space-between;align-items:center;font-size:.82rem;color:var(--muted)}
+.preview h2{font-size:1.8rem;margin:8px 0 4px}
+.demo{font-size:.75rem;color:#16875e;background:#e4f9ef;padding:5px 9px;border-radius:7px;display:inline-block}
+.money-row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid #e7edf1;font-size:.9rem}
+.money-row:last-child{border:0}
+.money-icon{display:inline-grid;place-items:center;width:34px;height:34px;background:#e4f8ef;border-radius:11px;margin-right:9px}
+.money-label{display:flex;align-items:center}
+section{padding:80px 0}
+.heading{text-align:center;max-width:700px;margin:0 auto 42px}
+.kicker{color:#0b9668;text-transform:uppercase;font-weight:800;font-size:.8rem;letter-spacing:1.5px;margin-bottom:10px}
+.heading h2,.section-copy h2{font-size:clamp(2rem,4vw,2.8rem);line-height:1.18;letter-spacing:-1px;margin-bottom:13px}
+.heading p,.section-copy p{color:var(--muted)}
+.features{background:var(--light)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:white;border:1px solid #e6edf0;border-radius:17px;overflow:hidden;transition:.2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 15px 35px #10243c12}
+.card img{width:100%;height:180px;object-fit:cover;display:block}
+.card-body{padding:22px}
+.card-icon{font-size:1.35rem;margin-bottom:7px}
+.card h3{font-size:1.12rem;margin-bottom:8px}
+.card p{font-size:.91rem;color:var(--muted);margin-bottom:14px}
+.card a{font-size:.9rem;color:#07865b;font-weight:750}
+.how{background:white}
+.how-grid{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}
+.photo-frame{position:relative}
+.photo-frame img{display:block;width:100%;height:440px;object-fit:cover;border-radius:23px}
+.photo-label{position:absolute;left:16px;right:16px;bottom:16px;background:#ffffffef;padding:15px 17px;border-radius:13px;font-weight:750}
+.steps{margin-top:28px;display:grid;gap:20px}
+.step{display:flex;gap:15px;align-items:flex-start}
+.number{min-width:42px;height:42px;display:grid;place-items:center;border-radius:13px;background:#dff8ec;color:#087b53;font-weight:850}
+.step p{font-size:.91rem;margin-top:3px}
+.cta{background:linear-gradient(100deg,#071426ed,#071426a0),url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1800&q=85") center/cover;color:white}
+.cta-inner{display:flex;justify-content:space-between;align-items:center;gap:30px}
+.cta p{color:#d0dbe6;margin-top:8px}
+footer{background:#050d19;color:#bdc8d5;padding:32px 0}
+.footer-row{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}
+.footer-links{display:flex;gap:20px;font-size:.88rem}
+.disclaimer{font-size:.76rem;color:#8594a7;margin-top:25px;padding-top:20px;border-top:1px solid #ffffff18}
+@media(max-width:850px){
+ .hero-grid,.how-grid{grid-template-columns:1fr}
+ .preview{justify-self:start}
+ .grid{grid-template-columns:repeat(2,1fr)}
+ .photo-frame img{height:350px}
+ .hero{padding:70px 0}
+}
+@media(max-width:580px){
+ nav{min-height:68px}
+ .brand{font-size:1.1rem}
+ .brand-mark{width:37px;height:37px}
+ .navlinks{gap:10px}
+ .navlinks>a:not(.btn){display:none}
+ .navlinks .btn{padding:10px 13px;font-size:.82rem}
+ section{padding:60px 0}
+ .grid{grid-template-columns:1fr}
+ .card img{height:210px}
+ .cta-inner{align-items:flex-start;flex-direction:column}
+ .preview{padding:18px}
+ h1{letter-spacing:-1.4px}
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="container">
+    <nav>
+      <a class="brand" href="#home">
+        <div class="brand-mark">G</div>
+        <span>Good<span>Funds</span></span>
+      </a>
+      <div class="navlinks">
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#about">About</a>
+        <a class="btn green" href="signup.html">Get Started ↗</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <div class="pill">● Your financial journey starts here</div>
+      <h1>Your money.<br>Your future.<br><span>Your GoodFunds.</span></h1>
+      <p class="hero-copy">
+        Take control of your financial journey with one convenient platform
+        to organise your money, set savings goals, explore investments and
+        plan for what comes next.
+      </p>
+      <div class="actions">
+        <a class="btn green" href="app.html">Get Started for Free →</a>
+        <a class="btn outline" href="#features">Explore Features</a>
+      </div>
+      <p class="small-note">✓ Simple tools &nbsp; ✓ Clear goals &nbsp; ✓ Your financial journey</p>
+    </div>
+
+    <div class="preview">
+      <div class="preview-top">
+        <span>GOODFUNDS OVERVIEW</span><span>● Preview</span>
+      </div>
+      <p style="margin-top:22px;color:#66778c;font-size:.85rem">Your financial dashboard</p>
+      <h2>Plan with confidence.</h2>
+      <span class="demo">Illustrative demo · No real balance</span>
+
+      <div style="margin-top:16px">
+        <div class="money-row">
+          <span class="money-label"><span class="money-icon">▣</span>Banking</span>
+          <strong>Manage</strong>
+        </div>
+        <div class="money-row">
+          <span class="money-label"><span class="money-icon">🎯</span>Savings goals</span>
+          <strong>Track</strong>
+        </div>
+        <div class="money-row">
+          <span class="money-label"><span class="money-icon">📈</span>Investments</span>
+          <strong>Explore</strong>
+        </div>
+        <div class="money-row">
+          <span class="money-label"><span class="money-icon">⇄</span>Transactions</span>
+          <strong>Review</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="features" id="features">
+  <div class="container">
+    <div class="heading">
+      <div class="kicker">One platform, more possibilities</div>
+      <h2>Build a stronger financial future.</h2>
+      <p>Tools to help you organise your finances and work toward the goals that matter.</p>
+    </div>
+
+    <div class="grid">
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=85" alt="Person making a payment with a bank card" loading="lazy">
+        <div class="card-body">
+          <div class="card-icon">💳</div>
+          <h3>Banking & Transactions</h3>
+          <p>Keep financial activity organised and review your transaction history.</p>
+          <a href="app.html">Explore your account →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=800&q=85" alt="Savings and money planning" loading="lazy">
+        <div class="card-body">
+          <div class="card-icon">🎯</div>
+          <h3>Smart Savings Goals</h3>
+          <p>Set a target, follow your progress and build better savings habits.</p>
+          <a href="app.html">Start planning →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800&q=85" alt="Financial charts on a screen" loading="lazy">
+        <div class="card-body">
+          <div class="card-icon">📈</div>
+          <h3>Investment Tracking</h3>
+          <p>Organise investment information and make considered financial decisions.</p>
+          <a href="app.html">Explore investments →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=800&q=85" alt="Secure online financial services" loading="lazy">
+        <div class="card-body">
+          <div class="card-icon">🔁</div>
+          <h3>Transfers</h3>
+          <p>Access your transfer interface when the relevant service is enabled.</p>
+          <a href="app.html">View account →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=85" alt="Person reviewing financial paperwork" loading="lazy">
+        <div class="card-body">
+          <div class="card-icon">🤝</div>
+          <h3>Loan Applications</h3>
+          <p>Review the application process and follow your application status.</p>
+          <a href="app.html">Learn more →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=800&q=85" alt="Digital security and technology" loading="lazy">
+        <div class="card-body">
+          <div class="card-icon">🛡️</div>
+          <h3>Account & Security</h3>
+          <p>Keep your profile details organised and protect access to your account.</p>
+          <a href="app.html">Access account →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="container how-grid">
+    <div class="photo-frame">
+      <img
+        src="https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?auto=format&fit=crop&w=1100&q=85"
+        alt="Person using a smartphone"
+        loading="lazy"
+        onerror="this.src='https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1100&q=85'">
+      <div class="photo-label">Good money habits begin with small steps.</div>
+    </div>
+
+    <div class="section-copy">
+      <div class="kicker">How it works</div>
+      <h2>A simpler way to take your next step.</h2>
+      <p>Start with your goals, organise your information and review your progress as you go.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="number">01</div>
+          <div><h3>Create your account</h3><p>Follow the registration process in the GoodFunds application.</p></div>
+        </div>
+        <div class="step">
+          <div class="number">02</div>
+          <div><h3>Choose your goals</h3><p>Organise your savings targets and explore the available tools.</p></div>
+        </div>
+        <div class="step">
+          <div class="number">03</div>
+          <div><h3>Track your progress</h3><p>Review your activity and keep your plans moving forward.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="about">
+  <div class="container cta-inner">
+    <div>
+      <div class="kicker" style="color:#64e8bb">The GoodFunds approach</div>
+      <h2>Bank. Save. Invest. <span style="color:var(--green)">Grow.</span></h2>
+      <p>Make room for better habits and a brighter financial future.</p>
+    </div>
+    <a class="btn green" href="app.html">Enter GoodFunds →</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-row">
+      <a class="brand" href="#home">
+        <div class="brand-mark">G</div>
+        <span>Good<span>Funds</span></span>
+      </a>
+      <div class="footer-links">
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="app.html">Sign in</a>
+      </div>
+    </div>
+    <p class="disclaimer">
+      GoodFunds is a financial technology prototype. Images are illustrative.
+      Dashboard elements do not represent real account balances. Do not
+      advertise live banking, transfers, investments or loans unless the
+      relevant services, authorisations and safeguards are in place.
+      Investments involve risk.
+    </p>
+    <p style="font-size:.8rem;margin-top:15px">© <span id="year"></span> GoodFunds. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
