@@ -5,9 +5,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#071426">
-    <title>GoodFunds | Bank, Save, Invest, Grow</title>
 
-    <style>
+    <!-- Page title for search results -->
+    <title>GoodFunds | Budget Planning, Savings Goals & Investment Tracking</title>
+
+    <!-- Search engine description -->
+    <meta
+        name="description"
+        content="Discover GoodFunds, a financial planning platform for organizing budgets, tracking savings goals, recording investments and planning your financial future."
+    >
+
+    <!-- Allow search engines to index this public landing page -->
+    <meta
+        name="robots"
+        content="index, follow, max-image-preview:large"
+    >
+
+    <!-- Website information -->
+    <meta name="application-name" content="GoodFunds">
+    <meta name="author" content="GoodFunds">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- Canonical website address -->
+    <link rel="canonical" href="https://goodfunds.vercel.app/">
+
+    <!-- Social media sharing: WhatsApp, Facebook, LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="GoodFunds">
+    <meta property="og:title" content="GoodFunds | Bank, Save, Invest, Grow">
+    <meta
+        property="og:description"
+        content="Organize your finances, set savings goals, track investment records and plan your next financial step with GoodFunds."
+    >
+    <meta property="og:url" content="https://goodfunds.vercel.app/">
+    <meta
+        property="og:image"
+        content="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&amp;fit=crop&amp;w=1200&amp;h=630&amp;q=85"
+    >
+    <meta property="og:image:alt" content="Illustrative financial planning and payment image">
+
+    <!-- X (Twitter) sharing preview -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GoodFunds | Bank, Save, Invest, Grow">
+    <meta
+        name="twitter:description"
+        content="Organize your budget, track savings goals and review your financial planning progress with GoodFunds."
+    >
+    <meta
+        name="twitter:image"
+        content="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&amp;fit=crop&amp;w=1200&amp;h=630&amp;q=85"
+    >
+
+
+    <!-- Website structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "GoodFunds",
+      "url": "https://goodfunds.vercel.app/",
+      "description": "GoodFunds is a financial planning prototype for budgeting, savings goals, investment tracking and financial organization."
+    }
+    </script>
+
+     <style>
         :root {
             --navy: #071426;
             --navy2: #10243c;
@@ -505,7 +566,6 @@
         }
     </style>
 </head>
-
 <body>
     <header>
         <div class="container">
@@ -727,7 +787,7 @@
         </div>
     </footer>
 
-    <script>
+<script>
         document.getElementById("year").textContent = new Date().getFullYear();
     </script>
 </body>
