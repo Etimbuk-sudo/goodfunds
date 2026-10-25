@@ -7,7 +7,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const helmet = require("helmet");
 const cors = require("cors");
-const rateLimit = require("express-rate-limit");
+// const rateLimit = require("express-rate-limit");
 const crypto = require("crypto");
 
 if (!process.env.JWT_SECRET || process.env.JWT_SECRET.length < 32) {
@@ -93,12 +93,12 @@ app.use(cors({
 
 app.use(express.json({ limit: "20kb" }));
 
-app.use("/api/auth", rateLimit({
-    windowMs: 15 * 60 * 1000,
-    limit: 10,
-    standardHeaders: "draft-7",
-    legacyHeaders: false
-}));
+// app.use("/api/auth", rateLimit({
+//     windowMs: 15 * 60 * 1000,
+//     limit: 10,
+//     standardHeaders: "draft-7",
+//     legacyHeaders: false
+// }));
 
 const moneyToKobo = value => {
     const n = Number(value);

@@ -1,5 +1,5 @@
 
-const API_BASE_URL = "https://goodfunds.onrender.com";
+const API_BASE_URL = "http://localhost:3000";
 
 const authForm = document.getElementById("authForm");
 const authMessage = document.getElementById("authMessage");
@@ -41,7 +41,19 @@ authForm.addEventListener("submit", async (event) => {
       }
     );
 
-    const result = await response.json();
+    const responseText = await response.text();
+
+    let result;
+
+    try {
+      result = JSON.parse(responseText);
+    } catch {
+      throw new Error(
+        responseText.startsWith("Too many")
+          ? "Too many requests. Please wait a minute and try again."
+          : "The server returned an invalid response. Please check your backend."
+      );
+    }
 
     if (!response.ok) {
       throw new Error(

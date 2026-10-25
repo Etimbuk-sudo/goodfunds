@@ -1,5 +1,35 @@
 "use strict";
 
+
+
+function syncLoggedInUser() {
+    try {
+        const loggedInUser = JSON.parse(
+            sessionStorage.getItem("goodfundsUser") || "{}"
+        );
+
+        if (
+            typeof loggedInUser.name === "string" &&
+            loggedInUser.name.trim()
+        ) {
+            data.user.name = loggedInUser.name.trim();
+
+            if (
+                typeof loggedInUser.email === "string" &&
+                loggedInUser.email.trim()
+            ) {
+                data.user.email = loggedInUser.email.trim();
+            }
+
+            saveData();
+        }
+    } catch (error) {
+        console.error("Could not load logged-in user:", error);
+    }
+}
+
+
+
         /* ========================================================
            GOODFUNDS — SINGLE-FILE DEMO APPLICATION
            All information is stored locally in this browser.
@@ -923,10 +953,53 @@
         /* ========================================================
            START DASHBOARD
         ======================================================== */
-        if (!sessionStorage.getItem("goodfundsToken")) {
-            window.location.href = "login.html";
-        } else {
-            updateUserLabels();
-            enterApp();
-        }
+       // Start GoodFunds dashboard
+if (!sessionStorage.getItem("goodfundsToken")) {
+    window.location.replace("login.html");
+} else {
+    // Load the name and email saved during login
+    syncLoggedInUser();
 
+    // Display the logged-in user's details
+    updateUserLabels();
+
+    // Open the dashboard
+    enterApp();
+}
+
+
+const logoutButton = document.getElementById("logoutButton");
+const API_BASE_URL = "http://localhost:3000";
+
+if (logoutButton) {
+  logoutButton.addEventListener("click", async () => {
+    const token = sessionStorage.getItem("goodfundsToken");
+
+    logoutButton.disabled = true;
+
+    try {
+      if (token) {
+        const response = await fetch(
+          `${API_BASE_URL}/api/auth/logout`,
+          {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          }
+        );
+
+        if (!response.ok) {
+          console.error("Backend logout could not be confirmed.");
+        }
+      }
+    } catch (error) {
+      console.error("Logout request failed:", error);
+    } finally {
+      sessionStorage.removeItem("goodfundsToken");
+      sessionStorage.removeItem("goodfundsUser");
+
+      window.location.replace("login.html");
+    }
+  });
+}
