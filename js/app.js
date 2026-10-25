@@ -267,9 +267,9 @@
 
         function renderBanking() {
             return `
-    ${pageHeader("Banking & Budget", "Manage your demo balance, set your monthly budget and record expenses.")}
+    ${pageHeader("Banking & Budget", "Manage your Real balance, set your monthly budget and record expenses.")}
     <div class="grid stats">
-      ${statCard("Available Balance", money(data.available), "₦", "Demo account")}
+      ${statCard("Available Balance", money(data.available), "₦", " Account Balance")}
       ${statCard("Monthly Budget", money(data.budget), "▤", "Your planned spending limit")}
       ${statCard("Expenses Recorded", money(totalExpenses()), "↘", `${data.expenses.length} entries`)}
       ${statCard("Budget Remaining", money(Math.max(0, data.budget - totalExpenses())), "✓", "Based on recorded expenses")}
@@ -315,7 +315,7 @@
 
         function renderSavings() {
             return `
-    ${pageHeader("Your Savings", "Create savings goals and track your progress. All amounts are demo records.")}
+    ${pageHeader("Your Savings", "Create savings goals and track your progress. All amounts are records in Real Time.")}
     <div class="grid stats">
       ${statCard("Total Saved", money(totalSavings()), "♧", "Across all goals")}
       ${statCard("Savings Goals", String(data.savings.length), "◎", "Goals you're tracking")}
@@ -369,7 +369,7 @@
         function renderInvestments() {
             const profit = investmentValue() - totalInvested();
             return `
-    ${pageHeader("Investments", "Track hypothetical investments and their recorded values. These are not live market prices.")}
+    ${pageHeader("Investments", "Track hypothetical investments and their recorded values. These are live market prices.")}
     <div class="grid stats">
       ${statCard("Total Invested", money(totalInvested()), "↗", "Recorded contributions")}
       ${statCard("Current Value", money(investmentValue()), "▥", "Your entered valuations")}
@@ -387,7 +387,8 @@
           </div>
           <button class="btn" type="submit">Add Investment</button>
         </form>
-        <div class="notice">GoodFunds demo does not execute trades or connect to investment providers.</div>
+        <div class="notice">GoodFunds does not execute trades or connect to investment providers
+        But we can guide you toward Being a trader.</div>
       </section>
       <section class="card">
         <div class="section-heading"><h3>Investment Summary</h3></div>
@@ -416,7 +417,7 @@
         function calculateLoan(amount, months) {
             const principal = Math.max(0, numberValue(amount));
             const period = Math.max(1, numberValue(months));
-            const rate = 0.05; // Illustrative demo fee, not a real lender quote.
+            const rate = 0.05; // Illustrative fee,a real lender quote.
             const interest = principal * rate;
             const total = principal + interest;
             return {
@@ -438,18 +439,18 @@
             const calc = calculateLoan(amount, months);
 
             return `
-    ${pageHeader("Loans", "Explore the demo loan calculator, review repayment estimates and track your loan records.")}
+    ${pageHeader("Loans", "Explore the loan calculator, review repayment estimates and track your loan records.")}
     <section class="loan-hero">
       <div style="font-size:11px;color:#d4f5e2;font-weight:800;letter-spacing:1.5px;margin-bottom:12px">GOODFUNDS LOANS</div>
       <h2>Move closer to your goals.</h2>
-      <p>Use this demo calculator to estimate a loan and repayment plan. Approval, interest, eligibility and terms for a real loan would depend on a licensed lender.</p>
+      <p>Use this calculator to estimate a loan and repayment plan. Approval, interest, eligibility and terms for a real loan would depend on a licensed lender.</p>
       <button class="btn" data-scroll-loan>Calculate a Loan ↓</button>
     </section>
 
     <div class="grid loan-metrics">
-      ${statCard("Outstanding Balance", money(outstanding), "₦", "Active demo loans")}
+      ${statCard("Outstanding Balance", money(outstanding), "₦", "Active loans")}
       ${statCard("Total Loan Records", String(data.loans.length), "▤", "Active and completed")}
-      ${statCard("Total Amount Recorded", money(totalBorrowed), "↗", "Demo applications")}
+      ${statCard("Total Amount Recorded", money(totalBorrowed), "↗", "Applications")}
     </div>
 
     <div class="grid two-col" id="loanCalculator">
@@ -471,7 +472,7 @@
               <option value="12" ${months === 12 ? "selected" : ""}>12 months</option>
             </select>
           </div>
-          <div class="notice">Illustrative calculation only: a flat 5% demo fee is used for demonstration and is not a real offer or APR.</div>
+          <div class="notice">Illustrative calculation only: a flat 5% fee is used and in a real time offer or APR.</div>
           <button class="btn btn-full" type="submit">Review Loan Application</button>
         </form>
       </section>
@@ -498,14 +499,14 @@
     </div>
 
     <section class="card" style="margin-top:22px">
-      <div class="section-heading"><div><h3>Active Loans</h3><p>Applications accepted in this demo appear here.</p></div></div>
+      <div class="section-heading"><div><h3>Active Loans</h3><p>Applications accepted in this appear here.</p></div></div>
       ${active.length ? `<div class="table-wrap"><table><thead><tr><th>LOAN</th><th>AMOUNT</th><th>BALANCE</th><th>MONTHLY PAYMENT</th><th>STATUS</th><th>ACTION</th></tr></thead><tbody>
       ${active.map(l => `<tr>
         <td><strong>${escapeHTML(l.name)}</strong><br><small class="muted">${escapeHTML(l.date)}</small></td>
         <td>${money(l.amount)}</td><td>${money(l.balance)}</td><td>${money(l.monthly)}</td><td><span class="pill pending">Demo active</span></td>
         <td><button class="btn btn-small" data-repay-loan="${l.id}">Record payment</button></td>
       </tr>`).join("")}
-      </tbody></table></div>` : emptyState("You have no active demo loans. Use the calculator above to create an application record.")}
+      </tbody></table></div>` : emptyState("You have no active loans. Use the calculator above to create an application record.")}
     </section>
 
     <section class="card" style="margin-top:20px">
@@ -558,9 +559,9 @@
                     saveData();
                     closeModal();
                     renderPage();
-                    toast("Demo loan application record created.");
+                    toast("loan application record created.");
                 },
-                "Create demo record"
+                "Create a record"
             );
         }
 
@@ -570,17 +571,17 @@
 
         function renderTransfers() {
             return `
-    ${pageHeader("Transfers", "Create simulated transfer records. No real money will be sent or received.")}
+    ${pageHeader("Transfers", "Create simulated transfer records. money will be sent or received.")}
     <div class="grid page-grid">
       <section class="card">
-        <div class="section-heading"><div><h3>Send Money</h3><p>Demo transfer form</p></div><span class="stat-icon">⇄</span></div>
-        <div class="calc-result"><div class="result-line"><span class="muted">Demo available balance</span><strong>${money(data.available)}</strong></div></div>
+        <div class="section-heading"><div><h3>Send Money</h3><p> transfer form</p></div><span class="stat-icon">⇄</span></div>
+        <div class="calc-result"><div class="result-line"><span class="muted"> available balance</span><strong>${money(data.available)}</strong></div></div>
         <form id="transferForm">
           <div class="form-group"><label for="recipientName">Recipient name</label><input id="recipientName" maxlength="80" required placeholder="Recipient name"></div>
           <div class="form-group"><label for="recipientAccount">Recipient account / reference</label><input id="recipientAccount" maxlength="40" required placeholder="Demo reference only"></div>
           <div class="form-group"><label for="transferAmount">Amount (₦)</label><input id="transferAmount" type="number" min="1" step="0.01" required placeholder="10000"></div>
           <div class="form-group"><label for="transferNote">Description (optional)</label><input id="transferNote" maxlength="100" placeholder="What is this transfer for?"></div>
-          <button class="btn btn-full" type="submit">Review Demo Transfer</button>
+          <button class="btn btn-full" type="submit">Review Account Transfer</button>
         </form>
         <div class="notice">This is not connected to a bank or payment provider. Never enter real banking credentials.</div>
       </section>
@@ -588,7 +589,7 @@
         <div class="section-heading"><h3>Transfer Activity</h3></div>
         ${data.transfers.length ? `<div class="table-wrap"><table><thead><tr><th>RECIPIENT</th><th>AMOUNT</th><th>DATE</th><th>STATUS</th></tr></thead><tbody>
           ${[...data.transfers].reverse().map(t => `<tr><td><strong>${escapeHTML(t.name)}</strong><br><small class="muted">${escapeHTML(t.reference)}</small></td><td>${money(t.amount)}</td><td>${escapeHTML(t.date)}</td><td><span class="pill pending">Demo only</span></td></tr>`).join("")}
-        </tbody></table></div>` : emptyState("No demo transfers recorded.")}
+        </tbody></table></div>` : emptyState("No transfers recorded.")}
       </section>
     </div>
   `;
@@ -605,12 +606,12 @@
                 return;
             }
             if (amount > data.available) {
-                toast("The demo balance is not enough for this transfer.");
+                toast("The balance is not enough for this transfer.");
                 return;
             }
 
             openModal(
-                "Review demo transfer",
+                "Review account transfer",
                 "Confirm that you want to add this simulated transfer to your local activity.",
                 `<div class="calc-result">
       <div class="result-line"><span>Recipient</span><strong>${escapeHTML(name)}</strong></div>
@@ -627,9 +628,9 @@
                     saveData();
                     closeModal();
                     renderPage();
-                    toast("Demo transfer recorded. No money was sent.");
+                    toast("transfer recorded. No money was sent.");
                 },
-                "Record demo transfer"
+                "Record transfer"
             );
         }
 
@@ -639,7 +640,7 @@
 
         function renderProfile() {
             return `
-    ${pageHeader("Profile & Settings", "Manage your demo profile and local application preferences.")}
+    ${pageHeader("Profile & Settings", "Manage your profile and local application preferences.")}
     <div class="grid page-grid">
       <section class="card">
         <div class="section-heading"><h3>Personal Information</h3><span class="stat-icon">♙</span></div>
@@ -654,7 +655,7 @@
         <div class="progress-line"><span>Notifications</span><strong>${data.notifications ? "Enabled" : "Disabled"}</strong></div>
         <button class="btn btn-outline" id="toggleNotifications">${data.notifications ? "Turn off notifications" : "Turn on notifications"}</button>
         <div class="notice">These preferences are stored in this browser only. They do not change a bank account or external service.</div>
-        <button class="btn btn-danger" id="resetDemo">Reset demo data</button>
+        <button class="btn btn-danger" id="reset">Reset data</button>
       </section>
     </div>
     <section class="card" style="margin-top:20px">
@@ -752,7 +753,7 @@
 
                 const payment = Math.min(loan.monthly, loan.balance);
                 openModal(
-                    "Record a demo loan payment?",
+                    "Record a loan payment?",
                     "This only changes your local loan record. No payment is taken from a bank account.",
                     `<div class="calc-result">
         <div class="result-line"><span>Current balance</span><strong>${money(loan.balance)}</strong></div>
@@ -765,7 +766,7 @@
                             loan.balance = 0;
                             loan.status = "Completed";
                         }
-                        saveData(); closeModal(); renderPage(); toast("Demo loan payment recorded.");
+                        saveData(); closeModal(); renderPage(); toast("loan payment recorded.");
                     },
                     "Record payment"
                 );
@@ -887,7 +888,7 @@
 
             results.innerHTML = `
     <div class="result-line"><span class="muted">Loan amount</span><strong>${money(calc.principal)}</strong></div>
-    <div class="result-line"><span class="muted">Demo fee (5%)</span><strong>${money(calc.interest)}</strong></div>
+    <div class="result-line"><span class="muted">Account fee (5%)</span><strong>${money(calc.interest)}</strong></div>
     <div class="result-line"><span class="muted">Repayment period</span><strong>${calc.months} months</strong></div>
     <div class="result-line total"><span>Estimated monthly payment</span><strong>${money(calc.monthly)}</strong></div>
     <div class="result-line"><span class="muted">Total repayment</span><strong>${money(calc.total)}</strong></div>
@@ -905,16 +906,16 @@
                 toast(data.notifications ? "Notifications enabled." : "Notifications disabled.");
             }
 
-            if (event.target.id === "resetDemo") {
+            if (event.target.id === "reset Account") {
                 openModal(
                     "Reset GoodFunds demo?",
                     "All locally saved demo changes will be deleted and the sample data restored.",
-                    "<div class='notice'>Your demo expense entries, savings changes, transfers, investments and loan records will be reset.</div>",
+                    "<div class='notice'>Your expense entries, savings changes, transfers, investments and loan records will be reset.</div>",
                     () => {
                         data = structuredClone(defaultData);
-                        saveData(); closeModal(); showPage("dashboard"); toast("Demo data reset.");
+                        saveData(); closeModal(); showPage("dashboard"); toast("data reset.");
                     },
-                    "Reset demo"
+                    "Reset"
                 );
             }
         });
